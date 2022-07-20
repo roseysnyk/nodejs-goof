@@ -1,4 +1,6 @@
-version: 2 # use CircleCI 2.0
+version: 2.1 # use CircleCI 2.0
+orbs: 
+  snyk: snyk/snyk@1.1.2
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/nodejs-goof # directory where steps will run
@@ -20,4 +22,4 @@ jobs: # a collection of steps
           command: snyk auth $SNYK_TOKEN
       - run: # run snyk test - run snyk test
           name: snyk test
-          command: snyk test --severity-threshold=critical --fail-on=patchable
+          command: snyk test
